@@ -3,6 +3,7 @@
     listens to 0.0.0.0:5000
     
 """
+from models.state import state
 from models import storage
 from flask import Flask
 from flask import render_template
@@ -20,7 +21,7 @@ def states_list():
 
 
 @app.teardown_appcontext
-def teardown(exc):
+def teardown(exception):
     """Remove the current SQLAlchemy session."""
     storage.close()
 
